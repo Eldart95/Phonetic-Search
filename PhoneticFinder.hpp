@@ -1,4 +1,6 @@
+#pragma once
+#include <string>
 namespace phonetic{
-int find(string a,string b);
+std::string find(std::string a,std::string b);
 //
 }
