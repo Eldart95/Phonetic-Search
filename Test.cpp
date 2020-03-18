@@ -22,7 +22,6 @@ TEST_CASE("Test replacement of p and b") {
     CHECK(find(text, "habby") == string("happy"));
     CHECK(find(text, "hapby") == string("happy"));
     CHECK(find(text, "habpy") == string("happy"));
-    /* Add more checks here */
 }
 
 TEST_CASE("Test replacement of lower-case and upper-case") {
@@ -31,7 +30,31 @@ TEST_CASE("Test replacement of lower-case and upper-case") {
     CHECK(find(text, "Happi") == string("Happi"));
     CHECK(find(text, "HAPPI") == string("Happi"));
     CHECK(find(text, "HaPpI") == string("Happi"));
-    /* Add more checks here */
+    CHECK(find(text, "hApPi") == string("Happi"));
+    CHECK(find(text, "haPpi") == string("Happi"));
+    CHECK(find(text, "HaPPI") == string("Happi"));
 }
+
+TEST_CASE("Test replacement of v and w"){
+    string text = "xxx weaver yyy";
+    CHECK(find(text,"weaver") == string("weaver"));
+    CHECK(find(text,"veawer") == string("weaver"));
+    CHECK(find(text,"veaver") == string("weaver"));
+    CHECK(find(text,"weawer") == string("weaver"));
+}
+
+TEST_CASE("Test replacement of b,f and p"){
+    string text = "xxx bro yyy for zzz prince";
+    CHECK(find(text,"bro") == string("bro"));
+    CHECK(find(text,"fro") == string("bro"));
+    CHECK(find(text,"pro") == string("bro"));
+    CHECK(find(text,"prince") == string("prince"));
+    CHECK(find(text,"brince") == string("prince"));
+    CHECK(find(text,"frince") == string("prince"));
+    CHECK(find(text,"for") == string("for"));
+    CHECK(find(text,"bor") == string("for"));
+    CHECK(find(text,"por") == string("for"));
+}
+
 
 /* Add more test cases here */
