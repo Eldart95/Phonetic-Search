@@ -55,6 +55,6 @@ TEST_CASE("Test replacement of b,f and p"){
     CHECK(find(text,"bor") == string("for"));
     CHECK(find(text,"por") == string("for"));
 }
-
+//
 
 /* Add more test cases here */
