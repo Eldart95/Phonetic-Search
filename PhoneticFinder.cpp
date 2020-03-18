@@ -1,7 +1,10 @@
 #include <string>
+#include "PhoneticFinder.hpp"
 using namespace std;
-int find(string a,string b){
-    return 1;
-    //todo finish the func
 
+namespace phonetic {
+    std:: string find(std::string a,std::string b){
+    return "OK";
+    //todo finish the func
+    }
 }
