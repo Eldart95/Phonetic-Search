@@ -6,11 +6,11 @@
 
 
 
-using namespace std;
 
 
-    std::string toLower(string str){
-        string temp = "";
+
+    std::string toLower(std::string str){
+        std::string temp = "";
         for(int i=0;i<str.length();i++){
             temp+=tolower(str[i]);
         }
@@ -53,26 +53,31 @@ using namespace std;
         }
         return a;
     }
-    struct ooops : std::exception {
-        const char* what() const noexcept {return "Ooops!\n";}
+    struct Mexception : std::exception {
+        const char* what() const throw() {
+            const char* ex = "Did not find the word in the text";
+            return ex;
+            }
     };
     
-
+    
+    
     namespace phonetic {
+     
 
     std:: string find(std::string text,std::string word) {
         
-        string lower_text = toLower(text);
-        string lower_word = toLower(word);
-        string ans="";
+       std:: string lower_text = toLower(text);
+       std::string lower_word = toLower(word);
+       std:: string ans="";
         
         int i=0;
         
         while(i<lower_text.length()) {
             
             if(confused_char(lower_text[i],lower_word[0])){
-                string tempLower="";
-                string temp="";
+                std::string tempLower="";
+                std::string temp="";
                 while(text[i]!=' '){
                     if(text[i]==text[text.length()]) break;
                     tempLower+=lower_text[i];
@@ -81,14 +86,15 @@ using namespace std;
                 }
                 
                 
-                string s = confused_word(tempLower,lower_word);
+                std:: string s = confused_word(tempLower,lower_word);
                 if(s != "NULL") ans = temp;
+                
                 
                 
             }
             i++;
         }
-        if(ans=="") throw ooops();
+        if(ans=="") throw Mexception();
        
         return ans;
     }
