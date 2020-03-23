@@ -35,12 +35,63 @@ TEST_CASE("Test replacement of lower-case and upper-case") {
     CHECK(find(text, "HaPPI") == string("Happi"));
 }
 
+TEST_CASE("Test_2_ replacement of lower-case and upper-case") {
+    string text = "Pink floyd";
+    CHECK(find(text, "pink") == string("Pink"));
+    CHECK(find(text, "PinK") == string("Pink"));
+    CHECK(find(text, "PInk") == string("Pink"));
+    CHECK(find(text, "PINK") == string("Pink"));
+    CHECK(find(text, "FLOYD") == string("floyd"));
+    CHECK(find(text, "floyd") == string("floyd"));
+    CHECK(find(text, "floyD") == string("floyd"));
+}
+
+TEST_CASE("Test_3_ replacement of lower-case and upper-case") {
+    string text = "Camel King Crimson QUEEN LED ZEPPLIN linKIN PARK RHCP";
+    CHECK(find(text, "camel") == string("Camel"));
+    CHECK(find(text, "caMEL") == string("Camel"));
+    CHECK(find(text, "crimson") == string("Crimson"));
+    CHECK(find(text, "CRImson") == string("Crimson"));
+    CHECK(find(text, "led") == string("LED"));
+    CHECK(find(text, "linkin") == string("linKIN"));
+    CHECK(find(text, "rhCp") == string("RHCP"));
+    CHECK(find(text, "RhCp") == string("RHCP"));
+    CHECK(find(text, "rHCp") == string("RHCP"));
+}
+
+TEST_CASE("Test_4_ replacement of lower-case and upper-case") {
+    string text = "ONCE upon a time in HollyWood and Django UNCHAIND by Quentin Tarantino";
+    CHECK(find(text, "once") == string("ONCE"));
+    CHECK(find(text, "Once") == string("ONCE"));
+    CHECK(find(text, "hollywood") == string("HollyWood"));
+    CHECK(find(text, "hollyWOOD") == string("HollyWood"));
+    CHECK(find(text, "django") == string("Django"));
+    CHECK(find(text, "DJANGO") == string("Django"));
+    CHECK(find(text, "quentin") == string("Quentin"));
+    CHECK(find(text, "Quentin") == string("Quentin"));
+    CHECK(find(text, "qUenTin") == string("Quentin"));
+    CHECK(find(text, "quenTIN") == string("Quentin"));
+    CHECK(find(text, "quentIn") == string("Quentin"));
+    CHECK(find(text, "QUENTIN") == string("Quentin"));
+    CHECK(find(text, "quenTIN") == string("Quentin"));
+    CHECK(find(text, "quentIN") == string("Quentin"));
+    CHECK(find(text, "QUenTIN") == string("Quentin"));
+}
+
 TEST_CASE("Test replacement of v and w"){
-    string text = "xxx waever yyy";
-    CHECK(find(text,"weaver") == string("waever"));
-    CHECK(find(text,"veawer") == string("waever"));
-    CHECK(find(text,"veaver") == string("waever"));
-    CHECK(find(text,"weawer") == string("waever"));
+    string text = "xxx weaver yyy";
+    CHECK(find(text,"weaver") == string("weaver"));
+    CHECK(find(text,"veawer") == string("weaver"));
+    CHECK(find(text,"veaver") == string("weaver"));
+    CHECK(find(text,"weawer") == string("weaver"));
+}
+
+TEST_CASE("Test_2_ replacement of v and w"){
+    string text = "xxx viva la vida yyy";
+    CHECK(find(text,"viva") == string("viva"));
+    CHECK(find(text,"wida") == string("vida"));
+    CHECK(find(text,"wiwa") == string("viva"));
+    CHECK(find(text,"wida") == string("vida"));
 }
 
 TEST_CASE("Test replacement of b,f and p"){
@@ -58,20 +109,29 @@ TEST_CASE("Test replacement of b,f and p"){
 
 TEST_CASE("Test replacement of g and j"){
     string text = "xxx jeoy yyy gargamel";
-    CHECK(find(text,"joey") == string("jeoy"));
-    CHECK(find(text,"goey") == string("jeoy"));
+    CHECK(find(text,"jeoy") == string("jeoy"));
+    CHECK(find(text,"geoy") == string("jeoy"));
     CHECK(find(text,"jarjamel") == string("gargamel"));
     CHECK(find(text,"garjamel") == string("gargamel"));
     CHECK(find(text,"jargamel") == string("gargamel"));
 }
 
 TEST_CASE("Test replacement of c,k and q"){
-    string text = "hello, can you quit, king";
+    string text = "xxx quit yyy";
     CHECK(find(text,"cuit") == string("quit"));
     CHECK(find(text,"kuit") == string("quit"));
+
+}
+TEST_CASE("Test_2_ replacement of c,k and q"){
+    string text = "xxx can yyy";
     CHECK(find(text,"can") == string("can"));
     CHECK(find(text,"kan") == string("can"));
     CHECK(find(text,"qan") == string("can"));
+
+}
+TEST_CASE("Test_3_ replacement of c,k and q"){
+    string text = "xxx king yyy";
+
     CHECK(find(text,"king") == string("king"));
     CHECK(find(text,"qing") == string("king"));
 
@@ -85,12 +145,32 @@ TEST_CASE("Test replacement of s and z"){
     CHECK(find(text,"zhalom") == string ("zhalom"));
 }
 
+TEST_CASE("Test_2_ replacement of s and z"){
+    string text = "sasami open";
+    CHECK(find(text,"sasami") == string ("sasami"));
+    CHECK(find(text,"zazami") == string ("sasami"));
+    CHECK(find(text,"zasami") == string ("sasami"));
+    CHECK(find(text,"sazami") == string ("sasami"));
+}
+
 TEST_CASE("Test replacemnt of d and t"){
-    string text = "i have been to dreamland";
-    CHECK(find(text,"tream") == string("dream"));
+    string text = "to xoxo";
     CHECK(find(text,"do") == string("to"));
-    CHECK(find(text,"dream") == string("dream"));
     CHECK(find(text,"to") == string("to"));  
+}
+
+TEST_CASE("Test_2_ replacemnt of d and t"){
+    string text = "i  dream zzz";
+    CHECK(find(text,"tream") == string("dream"));
+    CHECK(find(text,"dream") == string("dream"));
+}
+
+TEST_CASE("Test_3_ replacemnt of d and t"){
+    string text = "dont";
+    CHECK(find(text,"dont") == string("dont"));
+    CHECK(find(text,"tond") == string("dont"));
+    CHECK(find(text,"tont") == string("dont"));
+    CHECK(find(text,"tont") == string("dont"));
 }
 
 TEST_CASE("Test replacement of o and u"){
@@ -99,20 +179,35 @@ TEST_CASE("Test replacement of o and u"){
     CHECK(find(text,"yoo") == string("you"));
     CHECK(find(text,"you") == string("you"));
     CHECK(find(text,"yuo") == string("you"));
-    CHECK(find(text,"boy") == string("boy"));
-    CHECK(find(text,"buy") == string("boy"));
     CHECK(find(text,"how") == string("how"));
     CHECK(find(text,"huw") == string("how"));
     CHECK(find(text,"oh") == string("oh"));
     CHECK(find(text,"uh") == string("oh"));
 }
 
-TEST_CASE("Test replacement of y and w"){
+TEST_CASE("Test_2_ replacement of o and u"){
+    string text = "boy xxx zzz yyy";
+    CHECK(find(text,"boy") == string("boy"));
+    CHECK(find(text,"buy") == string("boy"));
+}
+
+TEST_CASE("Test replacement of y and i"){
     string text = "why where";
-    CHECK(find(text,"where")== string("where"));
-    CHECK(find(text,"yhere")== string("yhere"));
     CHECK(find(text,"why")== string("why"));
-    CHECK(find(text,"yhy")== string("who"));
+    CHECK(find(text,"whi")== string("why"));
+     
+}
+TEST_CASE("Test_2_ replacement of y and i"){
+    string text = "yonderland";
+    CHECK(find(text,"yonderland")== string("yonderland"));
+    CHECK(find(text,"ionderland")== string("yonderland"));
+     
+}
+
+TEST_CASE("Test_3_ replacement of y and i"){
+    string text = "xxxxxxxxxxx zypher song zzzzzz";
+    CHECK(find(text,"zypher")== string("zypher"));
+    CHECK(find(text,"zipher")== string("zypher"));
      
 }
 
