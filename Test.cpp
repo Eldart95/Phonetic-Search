@@ -210,6 +210,12 @@ TEST_CASE("Test_3_ replacement of y and i"){
     CHECK(find(text,"zipher")== string("zypher"));
      
 }
+TEST_CASE("XXXXXXXX"){
+    string text = "FBP";
+    CHECK(find(text,"FBP") == string("bfp"));
+     
+}
+
 
 
 

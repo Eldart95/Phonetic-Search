@@ -66,9 +66,9 @@
      
 
     std:: string find(std::string text,std::string word) {
-        
+       if(text.length()==0 || word.length()==0) Mexception();
        std:: string lower_text = toLower(text);
-       std::string lower_word = toLower(word);
+       std:: string lower_word = toLower(word);
        std:: string ans="";
         
         int i=0;
@@ -79,12 +79,13 @@
                 std::string tempLower="";
                 std::string temp="";
                 while(text[i]!=' '){
-                    if(text[i]==text[text.length()]) break;
+                    if(text[i]=='\0') break;
                     tempLower+=lower_text[i];
                     temp+=text[i];
                     i++;
                 }
-                
+                //FBP
+                //fbp <-> bfp
                 
                 std:: string s = confused_word(tempLower,lower_word);
                 if(s != "NULL") ans = temp;
@@ -92,6 +93,7 @@
                 
                 
             }
+            if(text[i]=='\0') break;
             i++;
         }
         if(ans=="") throw Mexception();
